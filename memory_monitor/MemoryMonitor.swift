@@ -33,8 +33,8 @@ final class MemoryMonitor: ObservableObject {
 
     func start() {
         refresh()
-        timer = Timer.scheduledTimer(withTimeInterval: pollInterval, repeats: true) { [weak self] _ in
-            Task { @MainActor in self?.refresh() }
+        timer = Timer.scheduledTimer(withTimeInterval: pollInterval, repeats: true) { _ in
+            Task { @MainActor [weak self] in self?.refresh() }
         }
     }
 
